@@ -3,9 +3,8 @@
 #Example:
 #>>> 15 < 8 #False
 expression1 = 5 < 3 #False
-print(expression1)
 expession2 = 3 == 3 #True
->>> 3 == "3" #False
->>> "3" > 3 #False
->>> "Hello" == "hello" #False
+experssion3 = 3 == "3" #False
+expression4 = "3" > 3 #False
+expression5 = "Hello" == "hello" #False
 
