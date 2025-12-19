@@ -8,7 +8,9 @@
 keys = ['Ten', 'Twenty', 'Thirty']
 values = [10, 20, 30]
 
-print(list(zip(keys, values)))
+zipped_dict = zip(keys, values)
+dictionary = dict(zipped_dict)
+print(dictionary)
 
 
 #exercise2
@@ -19,17 +21,26 @@ print(list(zip(keys, values)))
 #3 to 12 years old: $10
 #Over 12 years old: $15
 
-family = {"rick": 43, 'beth': 13, 'morty': 5, 'summer': 8}
+family = {}
 total_cost = 0
+print("enter your family members type 'quit' when finished")
 
-for name, age in family.items():
+while True:
+    name = input("enter your name: ")
+    if name == "quit":
+        break
+
+    age = int(input("enter age: "))
+    family[name] = age
+
     if age < 3:
         price = 0
-    elif 3 <= age <= 12:
-        price = 10
+    elif 3<= age <= 12:
+        price = 0
     else:
         price = 15
-    total_cost += price
+
+    total_cost += price    
 
     print(f"{name}: ${price}")
 
