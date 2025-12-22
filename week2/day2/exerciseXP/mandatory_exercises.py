@@ -156,6 +156,15 @@ import random
 def get_random_temp():
     return random.uniform(-10, 40)
 
+def get_random_temp_month(month):
+    if month in (12, 1, 2):
+        return random.uniform(-10, 5)
+    elif month in (3, 4, 5):
+        return random.uniform(5, 20)
+    elif month in (6, 7, 8):
+        return random.uniform(20, 35)
+    elif month in (9, 10, 11):
+        return random.uniform(10, 25)
 
 def main():
     month = int(input("enter a month 1-12: "))
@@ -172,15 +181,7 @@ def main():
     elif 32 <= temp <= 40:
         print("Its really hot! Stay cool.")
     
-def get_random_temp_month(month):
-    if month in (12, 1, 2):
-        return random.uniform(-10, 5)
-    elif month in (3, 4, 5):
-        return random.uniform(5, 20)
-    elif month in (6, 7, 8):
-        return random.uniform(20, 35)
-    elif month in (9, 10, 11):
-        return random.uniform(10, 25)
+
 main()
 
 
