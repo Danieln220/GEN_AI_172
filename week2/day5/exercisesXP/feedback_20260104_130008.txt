@@ -1,0 +1,13 @@
+URL: https://github.com/Danieln220/GEN_AI_172/blob/main/week2/day5/exercisesXP/exerciseXP.py
+suggestions for improvement:
+- Consider adding more comments to explain complex logic or algorithms, especially in the `sort_animals` method.
+- In the Cat exercise, the `find_oldest_cat` function could be slightly improved by using the `max` function with a key to find the oldest cat. This approach would be more concise and readable, especially when dealing with a larger number of cats.
+- In exercise 4, the bonus section's code was not fully integrated, and as such does not apply to the add_animal function in the Zoo class. This means that the add_animal function does not accept *args.
+- The test case in the bonus section has been placed outside of the Zoo class scope. It will cause a NameError when called if the add_animal function is defined within the Zoo class.
+- Refactor to remove redundant test code. Add test functions to improve test execution.
+Brief justification:
+- correctness: The code accurately implements all the exercises as described in the chapter content, including classes, objects, methods, and attributes. The code also covers conditional statements, lists, and dictionaries as required.
+- readability: The code is generally well-formatted and easy to follow. Clear variable names and comments are used, making it easier to understand the code's logic.
+- performance: The code is efficient and does not contain any unnecessary loops or operations. Performance is optimal for the given tasks.
+- security: There are no apparent security vulnerabilities in this code. The code does not handle external input or perform any operations that could be exploited.
+
