@@ -1,0 +1,10 @@
+URL: https://github.com/Danieln220/GEN_AI_172/blob/main/week2/day2/exerciseXP/mandatory_exercises.py
+suggestions for improvement:
+- In exercise 6, the output for `make_great` function is printing each name with 'the Great' prefix on a new line. It should modify the original list and then the `show_magicians` function should print the modified list.
+- Consider adding input validation for the month in exercise 7 to ensure it falls within the range of 1-12.
+Brief justification:
+- correctness: The code correctly addresses all exercises, implementing the functions as described and producing the expected outputs. Exercise 6 needs some minor changes. It prints great magicians insted of printing at the end with the show magician. Exercise 7 month is not valideted, and the random temp month uses a function that is not implemented for just the random temp.
+- readability: The code is well-structured and easy to understand, with comments explaining each step of the exercises. Function and variable names are descriptive, and the code is properly indented.
+- performance: The code demonstrates good performance, with efficient implementations for each function and exercise. The use of `f-strings` for string formatting and the `random` module for number generation are appropriate choices.
+- security: The code has no known security vulnerabilities. It does not handle user input in a way that could lead to exploits or other security risks.
+

@@ -1,0 +1,10 @@
+URL: https://github.com/Danieln220/GEN_AI_172/blob/main/week1/day4/daily_exercises/daily_exercise.py
+suggestions for improvement:
+- Consider adding comments to explain more complex logic, even though the code is mostly straightforward.
+- Using more descriptive variable names could slightly improve readability. For instance, `num` could be `base_number`.
+Brief justification:
+- correctness: The code accurately solves both Challenge 1 and Challenge 2, fulfilling all requirements specified in the chapter content. Challenge 1 generates a list of multiples based on user input, and Challenge 2 removes consecutive duplicate letters from a user-provided string.
+- readability: The code is generally readable due to its straightforward logic and clear variable names. However, adding a few more comments could enhance understanding, especially for those less familiar with Python.
+- performance: The code exhibits good performance.  Both solutions use loops which are efficient for the given tasks.  No major performance bottlenecks are apparent.
+- security: The code is reasonably secure. The `input()` function is used, and the inputs are cast to the appropriate types (`int` for numbers and implicitly string for the word).  No immediate vulnerabilities are apparent.
+

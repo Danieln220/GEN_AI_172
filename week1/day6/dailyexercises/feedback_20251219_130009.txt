@@ -1,0 +1,10 @@
+URL: https://github.com/Danieln220/GEN_AI_172/blob/main/week1/day6/dailyexercises/dailyexercise.py
+suggestions for improvement:
+- In the second challenge, the `items_purchase` dictionary and the `wallet` string are initialized as empty. The code will run without errors, but it won't produce the expected output as per the examples provided in the prompt. Ensure that `items_purchase` and `wallet` are properly populated with data as given in the problem statement to test the program effectively. Consider to add error handling for invalid user input (e.g., non-numeric input for wallet).
+- For readability, adding comments within the loops to explain what's happening would be beneficial.
+Brief justification:
+- correctness: The first challenge is correctly implemented. The second challenge is incomplete due to missing initialization of `items_purchase` and `wallet`, which are essential for the code to function as intended according to the challenge description. It would return nothing always.
+- readability: The code is reasonably readable, with clear variable names and straightforward logic. However, adding more comments could enhance understanding, especially within the loops.
+- performance: The code's performance is efficient for the given tasks. The loops and dictionary operations are generally fast.
+- security: The code does not have any obvious security vulnerabilities. However, it's always good practice to sanitize user inputs to prevent potential issues like code injection.
+
