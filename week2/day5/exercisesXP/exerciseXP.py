@@ -129,64 +129,18 @@ stairway.sing_me_a_song()
 # Use the methods of your Zoo object to test adding, selling, displaying, sorting, and grouping animals.
 
 
-# class Zoo:
-#     def __init__(self, zoo_name):
-#         self.name = zoo_name
-#         self.animals = []
-#         self.sorted_animals = {}
-
-#     def add_animal(self, new_animal):
-#           if new_animal not in self.animals:
-#                self.animals.append(new_animal)
-    
-#     def get_animals(self):
-#         print(f"animals in {self.name}: {self.animals}")
-
-#     def sell_animal(self, animal_sold):
-#         if animal_sold in self.animals:
-#              self.animals.remove(animal_sold)
-
-#     def sort_animals(self):
-#         self.animals.sort()
-#         self.sorted_animals = {}
-#         for animal in self.animals:
-#              first_letter = animal[0]
-#              if first_letter not in self.sorted_animals:
-#                   self.sorted_animals[first_letter] = [animal]
-#              else:
-#                   self.sorted_animals[first_letter].append(animal)
-
-
-#     def get_groups(self):
-#         for letter, names in self.sorted_animals.items():
-#              print(f"{letter}: {names}")
-
-# # Step 2: Create a Zoo instance
-# brooklyn_safari = Zoo("Brooklyn Safari")
-
-# # Step 3: Use the Zoo methods
-# brooklyn_safari.add_animal("Giraffe")
-# brooklyn_safari.add_animal("Bear")
-# brooklyn_safari.add_animal("Baboon")
-# brooklyn_safari.get_animals()
-# brooklyn_safari.sell_animal("Bear")
-# brooklyn_safari.get_animals()
-# brooklyn_safari.sort_animals()
-# brooklyn_safari.get_groups()
-
-# Bonus: Modify the add_animal() method to get *args so you dont need to repeat the method each time for a new animal, you can pass multiple animals names separated by a comma.
-
+ # class Zoo:
 class Zoo:
+
     def __init__(self, zoo_name):
         self.name = zoo_name
         self.animals = []
         self.sorted_animals = {}
 
-    def add_animal(self, *animals_to_add):
-        for animal in animals_to_add:
-            if animal not in self.animals:
-                self.animals.append(animal)
-
+    def add_animal(self, new_animal):
+          if new_animal not in self.animals:
+               self.animals.append(new_animal)
+    
     def get_animals(self):
         print(f"animals in {self.name}: {self.animals}")
 
@@ -209,6 +163,30 @@ class Zoo:
         for letter, names in self.sorted_animals.items():
              print(f"{letter}: {names}")
 
+# Step 2: Create a Zoo instance
+brooklyn_safari = Zoo("Brooklyn Safari")
+
+# Step 3: Use the Zoo methods
+brooklyn_safari.add_animal("Giraffe")
+brooklyn_safari.add_animal("Bear")
+brooklyn_safari.add_animal("Baboon")
+brooklyn_safari.get_animals()
+brooklyn_safari.sell_animal("Bear")
+brooklyn_safari.get_animals()
+brooklyn_safari.sort_animals()
+brooklyn_safari.get_groups() 
+
+#Bonus: Modify the add_animal() method to get *args so you dont need to repeat the method each time for a new animal, you can pass multiple animals names separated by a comma.
+
+def add_animal(self, *animals_to_add):
+        for animal in animals_to_add:
+            if animal not in self.animals:
+                self.animals.append(animal)
+
 my_zoo = Zoo("uganda safari")
-my_zoo.add_animal("Lion", "Tiger", "Bear", "Zebra")
-my_zoo.get_animals
+my_zoo.add_animal("Giraffe", "Baboon", "Bear", "Zebra")
+
+
+
+
+
