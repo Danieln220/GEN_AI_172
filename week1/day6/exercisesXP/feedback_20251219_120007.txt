@@ -1,0 +1,10 @@
+URL: https://github.com/Danieln220/GEN_AI_172/blob/main/week1/day6/exercisesXP/mandatory_exercise.py
+suggestions for improvement:
+- In Exercise 1, the code prints a list of tuples instead of a dictionary, correct this so it prints a dictionary.
+- In Exercise 2, the bonus part for user input is missing.
+Brief justification:
+- correctness: The code is mostly correct, implementing the core logic for all exercises. However, Exercise 1 outputs a list of tuples instead of a dictionary as requested. Exercise 2 doesn't include the bonus part for user input. Exercise 3 and 4 are correctly implemented.
+- readability: The code is well-structured and easy to follow, with meaningful variable names and comments that explain each section.
+- performance: The code uses efficient methods for dictionary creation and manipulation, like `enumerate` and dictionary comprehensions, resulting in good performance.
+- security: The code doesn't involve any user input (except for the missing bonus), file handling, or network operations, making it inherently secure.
+

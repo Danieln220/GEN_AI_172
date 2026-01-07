@@ -1,0 +1,12 @@
+URL: https://github.com/Danieln220/GEN_AI_172/blob/main/week4/day2/exercisesXP/exercise_3_PetDog.py
+suggestions for improvement:
+- Checker failed to provide a response.
+Correctness: N/A%
+-----
+URL: https://github.com/Danieln220/GEN_AI_172/blob/main/week4/day2/exercisesXP/exercisesXP.py
+suggestions for improvement:
+- Exercise 3 is missing. The prompt contained information for exercise 3 and should have been included.
+- In Exercise 2 within the fight method, both dogs use the same weight, which doesn't align with the prompt's intentions. The weight for the `other_dog` should be it's own weight, not `self.weight`.
+- In exercise 1 the Siamese class contains a `sing` method that was not requested by the prompt. The prompt states, "You can add any specific attributes or methods for the Siamese breed, or leave it as is if there are no unique behaviors." Leaving it as is would have been the expected response.
+Correctness: 83.0%
+-----

@@ -1,0 +1,10 @@
+URL: https://github.com/Danieln220/GEN_AI_172/blob/main/week1/day4/exercisesXP/mandatory_exercises.py
+suggestions for improvement:
+- Consider adding comments to explain more complex logic, especially within loops or conditional statements. This can enhance readability for others.
+- The variable name `numers_list` in Exercise 4 has a typo. Correct it to `numbers_list` for clarity.
+Brief justification:
+- correctness: The code accurately addresses all exercises in the chapter, implementing the requested functionalities for sets, tuples, lists, loops, and conditional statements, including user input and output. Each exercise's requirements are met completely and correctly.
+- readability: The code is generally well-structured and easy to follow. Clear variable names and comments are used, contributing to overall readability. Some more detailed comments in complex sections would improve it further.
+- performance: The code's performance is adequate for the scale of the exercises. The algorithms used are efficient enough for the given tasks, and no significant performance bottlenecks are apparent.
+- security: The code uses `input()` to get user input, which can be a security risk if not handled carefully. In Exercise 6, checks for digits in the name are implemented which increases security and matches the requirements. Using `int()` in Exercise 9 makes the program crash if non-numeric input is entered. Consider adding some error handling in case of a string.
+

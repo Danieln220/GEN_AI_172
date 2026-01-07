@@ -1,0 +1,11 @@
+URL: https://github.com/Danieln220/GEN_AI_172/blob/main/week1/day2/ExercisesXP/mandatory_exercises.py
+suggestions for improvement:
+- Consider adding more comments to explain the purpose of each code block, especially for Exercise 3 where you predict outputs.
+- In Exercise 3, it's good practice to actually print the result of the comparison along with your comment to verify your prediction directly in the output.
+- For Exercise 4, while f-strings are great, you can also use string concatenation for variety and learning purposes, although f-strings are generally preferred for readability.
+Brief justification:
+- correctness: All exercises are correctly implemented according to the instructions. Each exercise addresses the specified task, from printing 'Hello world' multiple times to using variables, performing calculations, using comparison operators, implementing if statements, and taking user input. The code adheres to the requirements outlined in the chapter content.
+- readability: The code is generally well-readable due to the clear variable names and simple logic. However, more comments, especially in Exercise 3, could further improve readability.  The use of f-strings enhances readability in exercises involving string formatting.
+- performance: The code is performant as it uses simple and efficient operations. There are no unnecessary loops or complex calculations that would impact performance.
+- security: The code is secure, as it doesn't involve any external data or operations that could be vulnerable to security risks. The use of `input()` is handled safely in the context of these exercises.
+
