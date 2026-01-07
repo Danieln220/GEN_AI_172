@@ -43,8 +43,8 @@ class Chartreux(Cat):
         return f'{sounds}'
     
 class Siamese(Cat):
-    def sing(self, sounds):
-        return f'{sounds}'
+    pass
+
     
 cats_list = [Bengal('jhon', 5),
              Chartreux('sara', 2),
@@ -81,7 +81,7 @@ class Dog:
 
     def fight(self, other_dog):
         self_speed = self.run_speed() * self.weight
-        other_dog_speed = other_dog.run_speed() * self.weight
+        other_dog_speed = other_dog.run_speed() * other_dog.weight
 
         if self_speed > other_dog_speed:
             return f'{self.name} won the fight'
