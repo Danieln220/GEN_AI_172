@@ -1,5 +1,5 @@
 import random
-from exercisesXP import Dog
+from week3.day1.exercisesXP import Dog
 
 class PetDog(Dog):
     def __init__(self, name, age, weight):
