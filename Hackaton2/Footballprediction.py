@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder, StandardScaler, MinMaxScaler
+from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import (
@@ -13,10 +13,12 @@ from sklearn.metrics import (
     ConfusionMatrixDisplay
 )
 #Step 1: Loading the Data and showing relevant data and organize before the data analysis
+
 url = "https://raw.githubusercontent.com/tarekmasryo/football-matches-2025-dataset/main/data/football_matches_2024_2025.csv"
 df = pd.read_csv(url)
 
 #Dataset size
+
 print("-" * 40)
 print("DATASET SHAPE")
 print("-" * 40)
@@ -25,6 +27,7 @@ print(f"Columns:        {df.shape[1]}")
 print()
 
 #Show all the columns we have in the dataset
+
 print("-" * 40)
 print("ALL COLUMNS")
 print("-" * 40)
@@ -33,6 +36,7 @@ for i, col in enumerate(df.columns, 1):
 print()
 
 #first 5 rows
+
 print("-" * 40)
 print("FIRST 5 ROWS")
 print("-" * 40)
@@ -40,6 +44,7 @@ print(df.head().to_string())
 print()
 
 #All the data types in the dataset
+
 print("-" * 40)
 print("DATA TYPES")
 print("-" * 40)
@@ -47,6 +52,7 @@ print(df.dtypes)
 print()
 
 #Checking for missing values
+
 print("-" * 40)
 print("MISSING VALUES")
 print("-" * 40)
@@ -57,6 +63,7 @@ missing_df = pd.DataFrame({
     "Missing %": missing_pct
 })
 # This will show only columns with missing values
+
 has_missing = missing_df[missing_df["Missing Count"] > 0]
 if len(has_missing) > 0:
     print(has_missing)
@@ -65,6 +72,7 @@ else:
 print()
 
 #Basic statistics for the columns
+
 print("=" * 60)
 print("📈 BASIC STATISTICS (numeric columns)")
 print("=" * 60)
@@ -72,6 +80,7 @@ print(df.describe().round(2).to_string())
 print()
 
 #Dataset summary
+
 print("-" * 40)
 print("DATASET SUMMARY")
 print("-" * 40)
@@ -82,6 +91,7 @@ print(f"Date range: {df['date_utc'].min()} to {df['date_utc'].max()}")
 print()
 
 #Match outcomes, relevant for the prediction
+
 print("-" * 40)
 print("MATCH OUTCOMES")
 print("-" * 40)
@@ -92,6 +102,7 @@ for outcome in outcome_counts.index:
 print()
 
 #Save for the data analysis 
+
 df.to_csv("football_data.csv", index=False)
 print("Saved local copy as 'football_data.csv'")
 
@@ -102,6 +113,7 @@ print("-" * 40)
 print("STEP 2: DATA ANALYSIS")
 print("=" * 60)
 # 1. Match Outcome Distribution: How many Home Wins vs Away Wins vs Draws 
+
 print("\n --- Match Outcome Disribution ---")
 outcome_counts = df["match_outcome"].value_counts()
 outcome_pct = (df["match_outcome"].value_counts(normalize=True) * 100).round(1)
@@ -109,6 +121,7 @@ for outcome in outcome_counts.index:
     print(f"{outcome}: {outcome_counts[outcome]:4d} matches ({outcome_pct[outcome]}%)")
 
 #Match outcome bar chart
+
 plt.figure(figsize=(8, 5))
 colors = ["#2ecc71", "#e74c3c", "#3498db"]
 ax = outcome_counts.plot(kind="bar", color=colors, edgecolor="black")
@@ -117,6 +130,7 @@ plt.xlabel("Outcome")
 plt.ylabel("Number of Matches")
 plt.xticks(rotation=0)
 # Add count labels on top of each bar
+
 for i, (count, pct) in enumerate(zip(outcome_counts, outcome_pct)):
     ax.text(i, count + 10, f"{count} ({pct}%)", ha="center", fontsize=10)
 plt.tight_layout()
@@ -124,11 +138,13 @@ plt.savefig("chart_01_outcome_distribution.png", dpi=150)
 plt.show()
 
 # 2. Match Outcome By League: Which league has more upsets
+
 print("\n--- Match Outcomes by League ---")
 league_outcomes = pd.crosstab(df["competition_name"], df["match_outcome"])
 print(league_outcomes)
 
 # Stacked Bar Chart for Match Outcomes By League
+
 plt.figure(figsize=(10, 6))
 league_outcomes_pct = league_outcomes.div(league_outcomes.sum(axis=1), axis=0) * 100
 league_outcomes_pct.plot(kind="barh", stacked=True, color=colors, edgecolor="black", figsize=(10, 6))
@@ -141,6 +157,7 @@ plt.savefig("chart_02_outcomes_by_league.png", dpi=150)
 plt.show()
 
 # 3. Goals Per Match Distribution:  How many goals are typical?
+
 print("\n --- Goals Per Match Statistics ---")
 print(f" Average goals per match: {df['total_goals'].mean():.2f}")
 print(f" Median goals per match: {df['total_goals'].median():.2f}")
@@ -148,6 +165,7 @@ print(f" Max goals in a match: {df['total_goals'].max()}")
 print(f" Matches with 0 goals: {(df['total_goals'] == 0).sum()}")
 
 #Histogram Of Total Goals
+
 plt.figure(figsize=(8, 5))
 sns.histplot(data=df, x="total_goals", bins=range(0, df["total_goals"].max() + 2),
              color="#3498db", edgecolor="black")
@@ -166,6 +184,7 @@ print(f" Average away goals: {df['fulltime_away'].mean():.2f}")
 print(f" Home advantage: {df['fulltime_home'].mean() - df['fulltime_away'].mean():.2f} more goals at home")
 
 # Box Plot for Home vs Away Comparison
+
 plt.figure(figsize=(8, 5))
 goals_melted = pd.DataFrame({
     "Goals": pd.concat([df["fulltime_home"], df["fulltime_away"]], ignore_index=True),
@@ -180,12 +199,14 @@ plt.savefig("chart_04_home_vs_away_goals.png", dpi=150)
 plt.show()
 
 # 5. Average Goals By League: Which league is most intresting
+
 print("\n --- Average Goals By Leagues ---")
 avg_goals_league = df.groupby("competition_name")["total_goals"].mean().sort_values(ascending=False)
 for league, avg in avg_goals_league.items():
     print(f"  {league:<25s}: {avg:.2f} goals/match")
 
 #Bar Chart for Average Goals By League
+
 plt.figure(figsize=(10, 5))
 avg_goals_league.plot(kind="bar", color="#9b59b6", edgecolor="black")
 plt.title("Average Goals Per Match by League", fontsize=14, fontweight="bold")
@@ -200,6 +221,7 @@ plt.savefig("chart_05_avg_goals_by_league.png", dpi=150)
 plt.show()
 
 # 6. Home Win Rate By League: Where is home advantage strongest?
+
 print("\n--- Home Win Rate by League ---")
 leagues = df["competition_name"].unique()
 home_win_rates = {}
@@ -212,12 +234,14 @@ for league in leagues:
     home_win_rates[league] = rate
  
 # Sort from highest to lowest
+
 rates_series = pd.Series(home_win_rates).sort_values(ascending=False)
  
 for league, rate in rates_series.items():
     print(f"  {league:<25s}: {rate:.1f}%")
 
 # 7. Correlation Heatmap For ML model
+
 print("\n--- Correlation Between Numeric Features ---")
 numeric_cols = ["fulltime_home", "fulltime_away", "halftime_home", "halftime_away",
                 "goal_difference", "total_goals", "home_points", "away_points"]
@@ -232,6 +256,7 @@ plt.savefig("chart_06_correlation_heatmap.png", dpi=150)
 plt.show()
 
 # 8. Halftime vs Fulltime Relationship: Does leading at halftime mean you win?
+
 print("\n--- Halftime Leading to Fulltime Win ---")
 df["halftime_result"] = np.where(
     df["halftime_home"] > df["halftime_away"], "Home Leading",
@@ -241,6 +266,7 @@ ht_vs_ft = pd.crosstab(df["halftime_result"], df["match_outcome"], normalize="in
 print(ht_vs_ft.round(1))
 
 # Bar Chart for Halftime vs Fulltime Outcome
+
 plt.figure(figsize=(10, 6))
 ht_vs_ft.plot(kind="bar", color=colors, edgecolor="black", figsize=(10, 6))
 plt.title("How Often Does the Halftime Leader Win?", fontsize=14, fontweight="bold")
@@ -253,7 +279,178 @@ plt.savefig("chart_07_halftime_vs_fulltime.png", dpi=150)
 plt.show()
 
 print("-" * 40)
-print("Data analysis complete !")
+print("Data analysis completed !")
+print("-" * 40)
+
+#Step 3: Preprocessing and Feature Engineering
+
+print("-" * 40)
+print("STEP 3: PREPROCESSING & FEATURE ENGINEERING")
+print("-" * 40)
+
+# 1. Dropping Irellevant Columns
+
+print("\n --- Dropping irellevant columns ---")
+print(f"Columns before: {len(df.columns)}")
+
+columns_to_drop = ["match_id", "referee_id", "home_team_id", "away_team_id",
+                   "status", "season", "stage", "date_utc", "referee",
+                   "home_points", "away_points", "halftime_result"]
+
+df_model = df.drop(columns=columns_to_drop, errors="ignore")
+print(f"Columns after: {len(df_model.columns)}")
+print(f"Remaining columns: {list(df_model.columns)}")
+print()
+
+# 2. Handle Missing Values
+
+print("--- Handle Missing Values ---")
+missing_count = df_model.isnull().sum().sum()
+if missing_count > 0:
+    print(f"Found {missing_count} missing values")
+    # Fill numeric columns with the median
+    numeric_cols = df_model.select_dtypes(include=[np.number]).columns
+    for col in numeric_cols:
+        if df_model[col].isnull().sum() > 0:
+            median_val = df_model[col].median()
+            df_model[col] = df_model[col].fillna(median_val)
+            print(f"  Filled {col} with median: {median_val}")
+ 
+    # Fill text columns with mode
+    text_cols = df_model.select_dtypes(include=["object"]).columns
+    for col in text_cols:
+        if df_model[col].isnull().sum() > 0:
+            mode_val = df_model[col].mode()[0]
+            df_model[col] = df_model[col].fillna(mode_val)
+            print(f"  Filled {col} with mode: {mode_val}")
+    print("All missing values handled!")
+else:
+    print("No missing values found - dataset is clean!")
+print()
+
+# 3. Encoding The Data Froe The ML
+
+print("--- Encode The Data ---")
+
+label_encoders = {}
+columns_to_encode = ["home_team", "away_team", "competition_name", "competition_code"]
+
+for col in columns_to_encode:
+    le = LabelEncoder()
+    df_model[col + "_encoded"] = le.fit_transform(df_model[col])
+    label_encoders[col] = le
+    print(f"Encoded {col}: {df_model[col + '_encoded'].nunique()} unique values")
+
+df_model = df_model.drop(columns=columns_to_encode)
+print()
+
+# 4. Feature Engineering
+
+print("--- Feature Engineering ---")
+
+# Feature 1: Did home team score in the first half?
+df_model["home_scored_first_half"] = (df_model["halftime_home"] > 0).astype(int)
+ 
+# Feature 2: Did away team score in the first half?
+df_model["away_scored_first_half"] = (df_model["halftime_away"] > 0).astype(int)
+ 
+# Feature 3: Halftime goal difference
+df_model["halftime_goal_diff"] = df_model["halftime_home"] - df_model["halftime_away"]
+ 
+# Feature 4: Second half home goals
+df_model["second_half_home"] = df_model["fulltime_home"] - df_model["halftime_home"]
+ 
+# Feature 5: Second half away goals
+df_model["second_half_away"] = df_model["fulltime_away"] - df_model["halftime_away"]
+ 
+print("New features created:")
+new_features = ["home_scored_first_half", "away_scored_first_half",
+                "halftime_goal_diff", "second_half_home", "second_half_away"]
+for features in new_features:
+    print(f"  {features}: min={df_model[features].min()}, max={df_model[features].max()}, mean={df_model[features].mean():.2f}")
+print()
+
+# 5. Separate Features (X) and Target (y) 
+
+print("--- Separate Features and Target ---")
+ 
+# Encode the target variable (match_outcome) to numbers
+
+target_encoder = LabelEncoder()
+y = target_encoder.fit_transform(df_model["match_outcome"])
+print(f"Target classes: {list(target_encoder.classes_)}")
+print(f"  Encoded as:{list(range(len(target_encoder.classes_)))}")
+ 
+# X = everything EXCEPT the target
+
+X = df_model.drop(columns=["match_outcome"])
+ 
+print(f"\nFeatures (X): {X.shape[1]} columns")
+print(f"Target (y):   {len(y)} values")
+print(f"Feature names: {list(X.columns)}")
+print()
+
+# 6. Normaliztaion And Standardization
+
+print("--- Normalization And Standardization")
+
+print("\nBefore scaling (first 3 rows):")
+print(X.head(3).to_string())
+
+# I chose the standard scaler since football have a lot of outliers like one sided matches.
+
+scaler = StandardScaler()
+X_scaled = pd.DataFrame(
+    scaler.fit_transform(X), 
+    columns=X.columns, 
+    index=X.index
+)
+
+print("\nAfter StandardScaler (first 3 rows):")
+print(X_scaled.head(3).round(3).to_string())
+ 
+# Show the effect of scaling
+
+print("\nScaling comparison for 'fulltime_home':")
+print(f"  Before: min={X['fulltime_home'].min()}, max={X['fulltime_home'].max()}, mean={X['fulltime_home'].mean():.2f}")
+print(f"  After:  min={X_scaled['fulltime_home'].min():.3f}, max={X_scaled['fulltime_home'].max():.3f}, mean={X_scaled['fulltime_home'].mean():.3f}")
+ 
+print()
+ 
+# Plot: Before vs After Scaling Comparison
+
+fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+ 
+# Before scaling
+
+axes[0].set_title("Before Scaling", fontsize=12, fontweight="bold")
+axes[0].boxplot([X["fulltime_home"], X["total_goals"], X["matchday"]],
+                labels=["fulltime_home", "total_goals", "matchday"])
+axes[0].set_ylabel("Original Values")
+ 
+# After StandardScaler
+
+axes[1].set_title("After StandardScaler", fontsize=12, fontweight="bold")
+axes[1].boxplot([X_scaled["fulltime_home"], X_scaled["total_goals"], X_scaled["matchday"]],
+                labels=["fulltime_home", "total_goals", "matchday"])
+axes[1].set_ylabel("Standardized Values")
+ 
+plt.suptitle("Effect of Scaling on Features", fontsize=14, fontweight="bold", y=1.02)
+plt.tight_layout()
+plt.savefig("chart_08_scaling_comparison.png", dpi=150)
+plt.show()
+
+# 7. Train/Test Split
+
+print("--- Train/Test Split")
+X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
+
+print(f"Training set: {X_train.shape[0]} matches ({X_train.shape[0]/len(X_scaled)*100:.0f}%)")
+print(f"Test set: {X_test.shape[0]} matches ({X_test.shape[0]/len(X_scaled)*100:.0f}%)")
+
+print()
+print("-" * 40)
+print("PREPROCESSING COMPLETE!")
 print("-" * 40)
 
 
