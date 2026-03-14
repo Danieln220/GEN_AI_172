@@ -578,6 +578,40 @@ plt.tight_layout()
 plt.savefig("chart_11_feature_importance.png", dpi=150)
 plt.show()
 
+# Step 6: Save Results for Tableau/PowerBI
+print("\n--- Save Results for Tableau/PowerBI ---")
+ 
+# Add predictions back to the original data for visualization
+results_df = df.copy()
+# Only add predictions for test set rows
+results_df["predicted_outcome"] = ""
+test_indices = X_test.index.tolist()
+for i, idx in enumerate(test_indices):
+    results_df.loc[idx, "predicted_outcome"] = class_names[best_predictions[i]]
+ 
+# Mark which rows were in training vs test set
+results_df["dataset_split"] = "Training"
+for idx in test_indices:
+    results_df.loc[idx, "dataset_split"] = "Test"
+ 
+# Add a column showing if prediction was correct
+results_df["prediction_correct"] = ""
+for i, idx in enumerate(test_indices):
+    actual = results_df.loc[idx, "match_outcome"]
+    predicted = results_df.loc[idx, "predicted_outcome"]
+    results_df.loc[idx, "prediction_correct"] = "Yes" if actual == predicted else "No"
+ 
+results_df.to_csv("football_results_for_dashboard.csv", index=False)
+print("Saved 'football_results_for_dashboard.csv' for Tableau/PowerBI")
+print("This file contains the original data + predictions + correct/incorrect labels")
+ 
+print()
+print("-" * 40)
+print("PROJECT COMPLETE!")
+print("-" * 40)
+print(f"\nBest model: {best_name} with {max(dt_accuracy, rf_accuracy) * 100:.1f}% accuracy")
+print("\nFiles created:")
+print("  - football_results_for_dashboard.csv (for Tableau/PowerBI)")
 
 
 
