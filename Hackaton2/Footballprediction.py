@@ -68,14 +68,14 @@ has_missing = missing_df[missing_df["Missing Count"] > 0]
 if len(has_missing) > 0:
     print(has_missing)
 else:
-    print("✅ No missing values! The dataset is clean.")
+    print("No missing values! The dataset is clean.")
 print()
 
 #Basic statistics for the columns
 
-print("=" * 60)
-print("📈 BASIC STATISTICS (numeric columns)")
-print("=" * 60)
+print("-" * 40)
+print("BASIC STATISTICS")
+print("-" * 40)
 print(df.describe().round(2).to_string())
 print()
 
@@ -114,7 +114,7 @@ print("STEP 2: DATA ANALYSIS")
 print("=" * 60)
 # 1. Match Outcome Distribution: How many Home Wins vs Away Wins vs Draws 
 
-print("\n --- Match Outcome Disribution ---")
+print("\n--- Match Outcome Disribution ---")
 outcome_counts = df["match_outcome"].value_counts()
 outcome_pct = (df["match_outcome"].value_counts(normalize=True) * 100).round(1)
 for outcome in outcome_counts.index:
@@ -200,7 +200,7 @@ plt.show()
 
 # 5. Average Goals By League: Which league is most intresting
 
-print("\n --- Average Goals By Leagues ---")
+print("\n--- Average Goals By Leagues ---")
 avg_goals_league = df.groupby("competition_name")["total_goals"].mean().sort_values(ascending=False)
 for league, avg in avg_goals_league.items():
     print(f"  {league:<25s}: {avg:.2f} goals/match")
@@ -290,12 +290,13 @@ print("-" * 40)
 
 # 1. Dropping Irellevant Columns
 
-print("\n --- Dropping irellevant columns ---")
+print("\n--- Dropping irellevant columns ---")
 print(f"Columns before: {len(df.columns)}")
 
 columns_to_drop = ["match_id", "referee_id", "home_team_id", "away_team_id",
                    "status", "season", "stage", "date_utc", "referee",
-                   "home_points", "away_points", "halftime_result"]
+                   "home_points", "away_points", "halftime_result",
+                   "fulltime_home", "fulltime_away", "goal_difference", "total_goals"]
 
 df_model = df.drop(columns=columns_to_drop, errors="ignore")
 print(f"Columns after: {len(df_model.columns)}")
@@ -356,16 +357,13 @@ df_model["away_scored_first_half"] = (df_model["halftime_away"] > 0).astype(int)
  
 # Feature 3: Halftime goal difference
 df_model["halftime_goal_diff"] = df_model["halftime_home"] - df_model["halftime_away"]
- 
-# Feature 4: Second half home goals
-df_model["second_half_home"] = df_model["fulltime_home"] - df_model["halftime_home"]
- 
-# Feature 5: Second half away goals
-df_model["second_half_away"] = df_model["fulltime_away"] - df_model["halftime_away"]
- 
+
+# Feature 4: Total halftime goals
+df_model["halftime_total_goals"] = df_model["halftime_home"] + df_model["halftime_away"]
+
 print("New features created:")
 new_features = ["home_scored_first_half", "away_scored_first_half",
-                "halftime_goal_diff", "second_half_home", "second_half_away"]
+                "halftime_goal_diff", "halftime_total_goals"]
 for features in new_features:
     print(f"  {features}: min={df_model[features].min()}, max={df_model[features].max()}, mean={df_model[features].mean():.2f}")
 print()
@@ -408,12 +406,12 @@ X_scaled = pd.DataFrame(
 
 print("\nAfter StandardScaler (first 3 rows):")
 print(X_scaled.head(3).round(3).to_string())
- 
-# Show the effect of scaling
 
-print("\nScaling comparison for 'fulltime_home':")
-print(f"  Before: min={X['fulltime_home'].min()}, max={X['fulltime_home'].max()}, mean={X['fulltime_home'].mean():.2f}")
-print(f"  After:  min={X_scaled['fulltime_home'].min():.3f}, max={X_scaled['fulltime_home'].max():.3f}, mean={X_scaled['fulltime_home'].mean():.3f}")
+# Show The Effect Of Scalling 
+
+print("\nScaling comparison for 'halftime_home':")
+print(f"  Before: min={X['halftime_home'].min()}, max={X['halftime_home'].max()}, mean={X['halftime_home'].mean():.2f}")
+print(f"  After:  min={X_scaled['halftime_home'].min():.3f}, max={X_scaled['halftime_home'].max():.3f}, mean={X_scaled['halftime_home'].mean():.3f}")
  
 print()
  
@@ -424,15 +422,15 @@ fig, axes = plt.subplots(1, 2, figsize=(12, 5))
 # Before scaling
 
 axes[0].set_title("Before Scaling", fontsize=12, fontweight="bold")
-axes[0].boxplot([X["fulltime_home"], X["total_goals"], X["matchday"]],
-                labels=["fulltime_home", "total_goals", "matchday"])
+axes[0].boxplot([X["halftime_home"], X["halftime_away"], X["matchday"]],
+                labels=["halftime_home", "halftime_away", "matchday"])
 axes[0].set_ylabel("Original Values")
  
 # After StandardScaler
 
 axes[1].set_title("After StandardScaler", fontsize=12, fontweight="bold")
-axes[1].boxplot([X_scaled["fulltime_home"], X_scaled["total_goals"], X_scaled["matchday"]],
-                labels=["fulltime_home", "total_goals", "matchday"])
+axes[1].boxplot([X_scaled["halftime_home"], X_scaled["halftime_away"], X_scaled["matchday"]],
+                labels=["halftime_home", "halftime_away", "matchday"])
 axes[1].set_ylabel("Standardized Values")
  
 plt.suptitle("Effect of Scaling on Features", fontsize=14, fontweight="bold", y=1.02)
@@ -452,6 +450,137 @@ print()
 print("-" * 40)
 print("PREPROCESSING COMPLETE!")
 print("-" * 40)
+
+# Step 4: Machine Leaning Model
+
+print("-" * 40)
+print("STEP 4: MACHINE LEARNING MODEL")
+print("-" * 40)
+
+# 1. Decision Tree Model
+print("\n--- Decision Tree Model---")
+
+dt_model = DecisionTreeClassifier(random_state=42)
+dt_model.fit(X_train, y_train)
+
+# Make predictions on the test set
+dt_predictions = dt_model.predict(X_test)
+
+# Check accuracy
+dt_accuracy = accuracy_score(y_test, dt_predictions)
+print(f"Decision Tree Accuracy: {dt_accuracy * 100:.1f}%")
+
+# 2. Random Forest Model
+
+print("\n--- Random Forest Model")
+
+rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
+rf_model.fit(X_train, y_train)
+
+# Make predictions on the test set
+
+rf_predictions = rf_model.predict(X_test)
+ 
+# Check accuracy
+
+rf_accuracy = accuracy_score(y_test, rf_predictions)
+print(f"Random Forest Accuracy: {rf_accuracy * 100:.1f}%")
+
+# 3. Comparing The Models
+
+print("\n--- Model Comparison ---")
+print(f"Decision Tree: {dt_accuracy * 100:.1f}%")
+print(f"Random Forest: {rf_accuracy * 100:.1f}%")
+if rf_accuracy >= dt_accuracy:
+    print("Winner: Random Forest!")
+    best_model = rf_model
+    best_predictions = rf_predictions
+    best_name = "Random Forest"
+else:
+    print("Winner: Decision Tree!")
+    best_model = dt_model
+    best_predictions = dt_predictions
+    best_name = "Decision Tree"
+ 
+# 4. Model Accuracy Comparison
+plt.figure(figsize=(8, 5))
+models = ["Decision Tree", "Random Forest"]
+accuracies = [dt_accuracy * 100, rf_accuracy * 100]
+bar_colors = ["#3498db", "#2ecc71"]
+bars = plt.bar(models, accuracies, color=bar_colors, edgecolor="black")
+for bar, acc in zip(bars, accuracies):
+    plt.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.5,
+             f"{acc:.1f}%", ha="center", fontsize=12, fontweight="bold")
+plt.title("Model Accuracy Comparison", fontsize=14, fontweight="bold")
+plt.ylabel("Accuracy (%)")
+plt.ylim(0, 105)
+plt.tight_layout()
+plt.savefig("chart_09_model_comparison.png", dpi=150)
+plt.show()
+
+# Step 5: Model Evaluation
+
+print("-" * 40)
+print(f"STEP 5: MODEL EVALUATION (using {best_name})")
+print("-" * 40)
+
+# 1. Model Report
+
+print("\n--- Model Report ---")
+
+class_names = list(target_encoder.classes_)
+print(classification_report(y_test, best_predictions, target_names=class_names))
+
+# 2. Confusion Matrix
+
+print("\n--- Confusion Matrix ---")
+
+cm = confusion_matrix(y_test, best_predictions)
+print("Rows = Actual outcome, Columns = Predicted outcome")
+print()
+
+# 3. Confusion Matrix Heatmap
+plt.figure(figsize=(8, 6))
+sns.heatmap(cm, annot=True, fmt="d", cmap="Blues",
+            xticklabels=class_names, yticklabels=class_names)
+plt.title(f"Confusion Matrix - {best_name}", fontsize=14, fontweight="bold")
+plt.xlabel("Predicted Outcome")
+plt.ylabel("Actual Outcome")
+plt.tight_layout()
+plt.savefig("chart_10_confusion_matrix.png", dpi=150)
+plt.show()
+
+# 4. Features Importance
+
+print("--- Feature Importance ---")
+print("Which features matter most for prediction")
+
+feature_importance = pd.Series(
+    best_model.feature_importances_,
+    index=X.columns
+).sort_values(ascending=False)
+
+# Top 10 Features
+
+for i, (feature, importance) in enumerate(feature_importance.head(10).items(), 1):
+    bar = "#" * int(importance * 50)
+    print(f"  {i:2d}. {feature} {importance:.3f} {bar}")
+
+# Plot: Feature Importance
+plt.figure(figsize=(10, 6))
+top_features = feature_importance.head(10)
+top_features.plot(kind="barh", color="#9b59b6", edgecolor="black")
+plt.title(f"Top 10 Most Important Features - {best_name}", fontsize=14, fontweight="bold")
+plt.xlabel("Importance Score")
+plt.ylabel("")
+plt.gca().invert_yaxis()
+plt.tight_layout()
+plt.savefig("chart_11_feature_importance.png", dpi=150)
+plt.show()
+
+
+
+
 
 
 
