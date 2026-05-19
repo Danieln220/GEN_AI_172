@@ -1,11 +1,12 @@
 import asyncio
-import sys
 from pathlib import Path
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
+VENV_PYTHON = str(Path(__file__).parent / ".venv" / "Scripts" / "python.exe")
+
 server_params = StdioServerParameters(
-    command=sys.executable,
+    command=VENV_PYTHON,
     args=[str(Path(__file__).parent / "server.py")],
     env=None,
 )
@@ -32,7 +33,6 @@ async def run():
         async with ClientSession(read, write) as session:
             await session.initialize()
 
-            # List resources (note: templates like greeting://{name} show up via list_resource_templates)
             resources = await session.list_resources()
             print("Resources:")
             for r in resources.resources:
@@ -43,17 +43,14 @@ async def run():
             for t in templates.resourceTemplates:
                 print(f"  - {t.uriTemplate}")
 
-            # List tools
             tools = await session.list_tools()
             print("\nTools:")
             for t in tools.tools:
                 print(f"  - {t.name}: {t.description}")
 
-            # Read greeting://hello
             greeting = await session.read_resource("greeting://hello")
             print(f"\nGreeting: {extract_content(greeting)}")
 
-            # Call add with a=1, b=7
             result = await session.call_tool("add", arguments={"a": 1, "b": 7})
             print(f"add(1, 7) = {extract_content(result)}")
 
