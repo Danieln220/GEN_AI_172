@@ -2,7 +2,7 @@ import string
 import random
 from datetime import datetime
 from faker import Faker
-from func import sum_two
+from week3.day4.exercisesXP.func import sum_two
 
 
 # ── Exercise 1: Currencies ─────────────────────────────────────────────────────
