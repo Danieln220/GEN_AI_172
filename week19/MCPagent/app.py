@@ -15,8 +15,8 @@ from datetime import datetime
 
 import streamlit as st
 
-from week19.MCPagent.agent.orchestrator import run_goal, WORK_DIR, REPO_DIR
-from week19.MCPagent.ui.report_renderer import render_report
+from agent.orchestrator import run_goal, WORK_DIR, REPO_DIR
+from ui.report_renderer import render_report
 
 REPORT_FILE  = os.path.join(WORK_DIR, "code_review.txt")
 HISTORY_DIR  = os.path.join(WORK_DIR, "history")

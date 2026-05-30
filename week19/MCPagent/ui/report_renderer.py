@@ -14,7 +14,7 @@ filters dict keys:
 import re
 import streamlit as st
 
-from week19.MCPagent.utils.fix_applier import apply_fix
+from utils.fix_applier import apply_fix
 
 _ICON = {"FIXABLE": "🔧", "REFACTOR": "🔀", "WARNING": "⚠️"}
 
