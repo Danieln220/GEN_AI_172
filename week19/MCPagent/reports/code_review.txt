@@ -1,0 +1,523 @@
+Full repo scan: 30 Python files
+
+=== TRIAGE + FIX: main.py ===
+FILEPATH: C:/Users/USER/Downloads/test-repo\command-line-shell\after\src\main.py
+Issues: 6  (FIXABLE: 0, REFACTOR: 0, WARNING: 6)
+
+[WARNING]  no_docstring — exit_shell()  line 55
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — help_shell()  line 62
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — process_hash()  line 66
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — process_decode()  line 79
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — process_encode()  line 92
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — main()  line 105
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+FIXABLE patches are safe mechanical changes. REFACTOR hints require judgment — review context before applying.
+
+No functions found in C:/Users/USER/Downloads/test-repo\command-line-shell\after\src\shell\algorithms.py.
+
+=== TRIAGE + FIX: api.py ===
+FILEPATH: C:/Users/USER/Downloads/test-repo\command-line-shell\after\src\shell\api.py
+Issues: 9  (FIXABLE: 0, REFACTOR: 0, WARNING: 9)
+
+[WARNING]  no_docstring — encoding_algos()  line 3
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — decoding_algos()  line 6
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — hashing_algos()  line 9
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — has_encoding_algo()  line 12
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — has_decoding_algo()  line 15
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — has_hashing_algo()  line 18
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — encode()  line 21
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — decode()  line 27
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — hash_val()  line 33
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+FIXABLE patches are safe mechanical changes. REFACTOR hints require judgment — review context before applying.
+
+=== TRIAGE + FIX: core.py ===
+FILEPATH: C:/Users/USER/Downloads/test-repo\command-line-shell\after\src\shell\core.py
+Issues: 4  (FIXABLE: 0, REFACTOR: 0, WARNING: 4)
+
+[WARNING]  no_docstring — add_command()  line 7
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — execute()  line 10
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — parse_command_string()  line 14
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — run_shell()  line 33
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+FIXABLE patches are safe mechanical changes. REFACTOR hints require judgment — review context before applying.
+
+No functions found in C:/Users/USER/Downloads/test-repo\command-line-shell\after\src\shell\__init__.py.
+
+=== TRIAGE + FIX: main.py ===
+FILEPATH: C:/Users/USER/Downloads/test-repo\command-line-shell\before\src\main.py
+Issues: 20  (FIXABLE: 0, REFACTOR: 0, WARNING: 20)
+
+[WARNING]  dead_import — (module)()  line 10
+  'time' is imported but never referenced in this file.
+  HINT:  Remove this line or add '# noqa' if used indirectly (e.g. re-export).
+
+[WARNING]  missing_type_hints — main()  line 169
+  Missing annotations — return type.
+  HINT:  Add type hints: def fn(x: int, y: str) -> bool:
+
+[WARNING]  no_docstring — main()  line 169
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  missing_type_hints — hashDoc()  line 62
+  Missing annotations — return type.
+  HINT:  Add type hints: def fn(x: int, y: str) -> bool:
+
+[WARNING]  missing_type_hints — DeDoc()  line 66
+  Missing annotations — return type.
+  HINT:  Add type hints: def fn(x: int, y: str) -> bool:
+
+[WARNING]  missing_type_hints — EnDoc()  line 70
+  Missing annotations — return type.
+  HINT:  Add type hints: def fn(x: int, y: str) -> bool:
+
+[WARNING]  missing_type_hints — Encode()  line 74
+  Missing annotations — params: Text, EncoderName; return type.
+  HINT:  Add type hints: def fn(x: int, y: str) -> bool:
+
+[WARNING]  no_docstring — Encode()  line 74
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  missing_type_hints — Decode()  line 90
+  Missing annotations — params: Text, DecoderName; return type.
+  HINT:  Add type hints: def fn(x: int, y: str) -> bool:
+
+[WARNING]  no_docstring — Decode()  line 90
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  missing_type_hints — hashVal()  line 106
+  Missing annotations — params: Text, HasherName; return type.
+  HINT:  Add type hints: def fn(x: int, y: str) -> bool:
+
+[WARNING]  no_docstring — hashVal()  line 106
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  missing_type_hints — showFuncs()  line 117
+  Missing annotations — return type.
+  HINT:  Add type hints: def fn(x: int, y: str) -> bool:
+
+[WARNING]  no_docstring — showFuncs()  line 117
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  missing_type_hints — SetText()  line 123
+  Missing annotations — params: Text; return type.
+  HINT:  Add type hints: def fn(x: int, y: str) -> bool:
+
+[WARNING]  no_docstring — SetText()  line 123
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — Exit()  line 126
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  missing_type_hints — Help()  line 133
+  Missing annotations — return type.
+  HINT:  Add type hints: def fn(x: int, y: str) -> bool:
+
+[WARNING]  no_docstring — Help()  line 133
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — run()  line 158
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+FIXABLE patches are safe mechanical changes. REFACTOR hints require judgment — review context before applying.
+
+=== TRIAGE + FIX: Algorithms.py ===
+FILEPATH: C:/Users/USER/Downloads/test-repo\command-line-shell\before\src\UtilPackage\Algorithms.py
+Issues: 5  (FIXABLE: 0, REFACTOR: 0, WARNING: 5)
+
+[WARNING]  dead_import — (module)()  line 1
+  'cryptography' is imported but never referenced in this file.
+  HINT:  Remove this line or add '# noqa' if used indirectly (e.g. re-export).
+
+[WARNING]  dead_import — (module)()  line 2
+  'EncodingManager' is imported but never referenced in this file.
+  HINT:  Remove this line or add '# noqa' if used indirectly (e.g. re-export).
+
+[WARNING]  dead_import — (module)()  line 2
+  'ENCODE' is imported but never referenced in this file.
+  HINT:  Remove this line or add '# noqa' if used indirectly (e.g. re-export).
+
+[WARNING]  dead_import — (module)()  line 2
+  'DECODE' is imported but never referenced in this file.
+  HINT:  Remove this line or add '# noqa' if used indirectly (e.g. re-export).
+
+[WARNING]  dead_import — (module)()  line 3
+  'Hasher' is imported but never referenced in this file.
+  HINT:  Remove this line or add '# noqa' if used indirectly (e.g. re-export).
+
+FIXABLE patches are safe mechanical changes. REFACTOR hints require judgment — review context before applying.
+
+=== TRIAGE + FIX: EncodingApi.py ===
+FILEPATH: C:/Users/USER/Downloads/test-repo\command-line-shell\before\src\UtilPackage\EncodingApi.py
+Issues: 5  (FIXABLE: 0, REFACTOR: 0, WARNING: 5)
+
+[WARNING]  no_docstring — EncodingManager()  line 6
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  missing_type_hints — Func_()  line 9
+  Missing annotations — return type.
+  HINT:  Add type hints: def fn(x: int, y: str) -> bool:
+
+[WARNING]  no_docstring — Func_()  line 9
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  missing_type_hints — Func_()  line 15
+  Missing annotations — return type.
+  HINT:  Add type hints: def fn(x: int, y: str) -> bool:
+
+[WARNING]  no_docstring — Func_()  line 15
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+FIXABLE patches are safe mechanical changes. REFACTOR hints require judgment — review context before applying.
+
+=== TRIAGE + FIX: HashingApi.py ===
+FILEPATH: C:/Users/USER/Downloads/test-repo\command-line-shell\before\src\UtilPackage\HashingApi.py
+Issues: 1  (FIXABLE: 0, REFACTOR: 0, WARNING: 1)
+
+[WARNING]  no_docstring — Hasher()  line 1
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+FIXABLE patches are safe mechanical changes. REFACTOR hints require judgment — review context before applying.
+
+=== TRIAGE + FIX: Shell.py ===
+FILEPATH: C:/Users/USER/Downloads/test-repo\command-line-shell\before\src\UtilPackage\Shell.py
+Issues: 2  (FIXABLE: 0, REFACTOR: 0, WARNING: 2)
+
+[WARNING]  missing_type_hints — getArgStr()  line 11
+  Missing annotations — return type.
+  HINT:  Add type hints: def fn(x: int, y: str) -> bool:
+
+[WARNING]  no_docstring — getArgStr()  line 11
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+FIXABLE patches are safe mechanical changes. REFACTOR hints require judgment — review context before applying.
+
+No functions found in C:/Users/USER/Downloads/test-repo\command-line-shell\before\src\UtilPackage\Tool.py.
+
+=== TRIAGE + FIX: UtilFuncs.py ===
+FILEPATH: C:/Users/USER/Downloads/test-repo\command-line-shell\before\src\UtilPackage\UtilFuncs.py
+Issues: 1  (FIXABLE: 0, REFACTOR: 0, WARNING: 1)
+
+[WARNING]  stub_function — TestFunction()  line 18
+  Function body is empty or stub-only (pass/docstring).
+  HINT:  Implement or remove this function.
+
+FIXABLE patches are safe mechanical changes. REFACTOR hints require judgment — review context before applying.
+
+=== TRIAGE + FIX: __init__.py ===
+FILEPATH: C:/Users/USER/Downloads/test-repo\command-line-shell\before\src\UtilPackage\__init__.py
+Issues: 3  (FIXABLE: 0, REFACTOR: 0, WARNING: 3)
+
+[WARNING]  dead_import — (module)()  line 1
+  'Command' is imported but never referenced in this file.
+  HINT:  Remove this line or add '# noqa' if used indirectly (e.g. re-export).
+
+[WARNING]  dead_import — (module)()  line 1
+  'Shell' is imported but never referenced in this file.
+  HINT:  Remove this line or add '# noqa' if used indirectly (e.g. re-export).
+
+[WARNING]  dead_import — (module)()  line 2
+  'LoadConfig' is imported but never referenced in this file.
+  HINT:  Remove this line or add '# noqa' if used indirectly (e.g. re-export).
+
+FIXABLE patches are safe mechanical changes. REFACTOR hints require judgment — review context before applying.
+
+Syntax error in C:/Users/USER/Downloads/test-repo\command-line-shell\before\src\UtilPackage\TestingDir\UTestEncoding.py: invalid syntax (UTestEncoding.py, line 1)
+
+=== TRIAGE + FIX: after.py ===
+FILEPATH: C:/Users/USER/Downloads/test-repo\employee-management-system\after.py
+Issues: 3  (FIXABLE: 0, REFACTOR: 0, WARNING: 3)
+
+[WARNING]  stub_function — pay()  line 43
+  Function body is empty or stub-only (pass/docstring).
+  HINT:  Implement or remove this function.
+
+[WARNING]  no_docstring — pay()  line 77
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — pay()  line 90
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+FIXABLE patches are safe mechanical changes. REFACTOR hints require judgment — review context before applying.
+
+=== TRIAGE + FIX: before.py ===
+FILEPATH: C:/Users/USER/Downloads/test-repo\employee-management-system\before.py
+Issues: 1  (FIXABLE: 1, REFACTOR: 0, WARNING: 0)
+
+[FIXABLE]  empty_except — take_a_holiday()  line 31
+  Empty except block silently discards the exception.
+  BEFORE:
+    except Exception:
+        pass
+  AFTER:
+    except Exception:
+        raise
+
+FIXABLE patches are safe mechanical changes. REFACTOR hints require judgment — review context before applying.
+
+=== TRIAGE + FIX: main.py ===
+FILEPATH: C:/Users/USER/Downloads/test-repo\point-of-sale\after\main.py
+Issues: 2  (FIXABLE: 0, REFACTOR: 0, WARNING: 2)
+
+[WARNING]  hardcoded_path — (module)()  line 10
+  Hardcoded path: 'https://api.stripe.com/v2'
+  HINT:  Move this to .env or a config constant so it works across machines.
+
+[WARNING]  no_docstring — main()  line 8
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+FIXABLE patches are safe mechanical changes. REFACTOR hints require judgment — review context before applying.
+
+No functions found in C:/Users/USER/Downloads/test-repo\point-of-sale\after\pos\customer.py.
+
+=== TRIAGE + FIX: line_item.py ===
+FILEPATH: C:/Users/USER/Downloads/test-repo\point-of-sale\after\pos\line_item.py
+Issues: 1  (FIXABLE: 0, REFACTOR: 0, WARNING: 1)
+
+[WARNING]  no_docstring — total_price()  line 11
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+FIXABLE patches are safe mechanical changes. REFACTOR hints require judgment — review context before applying.
+
+=== TRIAGE + FIX: order.py ===
+FILEPATH: C:/Users/USER/Downloads/test-repo\point-of-sale\after\pos\order.py
+Issues: 4  (FIXABLE: 0, REFACTOR: 0, WARNING: 4)
+
+[WARNING]  no_docstring — add_line_item()  line 25
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  missing_type_hints — set_status()  line 28
+  Missing annotations — return type.
+  HINT:  Add type hints: def fn(x: int, y: str) -> bool:
+
+[WARNING]  no_docstring — set_status()  line 28
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — total_price()  line 32
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+FIXABLE patches are safe mechanical changes. REFACTOR hints require judgment — review context before applying.
+
+=== TRIAGE + FIX: payment.py ===
+FILEPATH: C:/Users/USER/Downloads/test-repo\point-of-sale\after\pos\payment.py
+Issues: 4  (FIXABLE: 0, REFACTOR: 0, WARNING: 4)
+
+[WARNING]  dead_import — (module)()  line 1
+  'annotations' is imported but never referenced in this file.
+  HINT:  Remove this line or add '# noqa' if used indirectly (e.g. re-export).
+
+[WARNING]  no_docstring — create()  line 13
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — connect_to_service()  line 18
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — process_payment()  line 22
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+FIXABLE patches are safe mechanical changes. REFACTOR hints require judgment — review context before applying.
+
+=== TRIAGE + FIX: system.py ===
+FILEPATH: C:/Users/USER/Downloads/test-repo\point-of-sale\after\pos\system.py
+Issues: 4  (FIXABLE: 0, REFACTOR: 0, WARNING: 4)
+
+[WARNING]  no_docstring — process_payment()  line 14
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — register_order()  line 23
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — find_order()  line 27
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — process_order()  line 30
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+FIXABLE patches are safe mechanical changes. REFACTOR hints require judgment — review context before applying.
+
+No functions found in C:/Users/USER/Downloads/test-repo\point-of-sale\after\pos\__init__.py.
+
+=== TRIAGE + FIX: main.py ===
+FILEPATH: C:/Users/USER/Downloads/test-repo\point-of-sale\before\main.py
+Issues: 2  (FIXABLE: 0, REFACTOR: 0, WARNING: 2)
+
+[WARNING]  hardcoded_path — (module)()  line 8
+  Hardcoded path: 'https://api.stripe.com/v2'
+  HINT:  Move this to .env or a config constant so it works across machines.
+
+[WARNING]  no_docstring — main()  line 5
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+FIXABLE patches are safe mechanical changes. REFACTOR hints require judgment — review context before applying.
+
+=== TRIAGE + FIX: order.py ===
+FILEPATH: C:/Users/USER/Downloads/test-repo\point-of-sale\before\pos\order.py
+Issues: 3  (FIXABLE: 0, REFACTOR: 0, WARNING: 3)
+
+[WARNING]  no_docstring — create_line_item()  line 29
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  missing_type_hints — set_status()  line 34
+  Missing annotations — return type.
+  HINT:  Add type hints: def fn(x: int, y: str) -> bool:
+
+[WARNING]  no_docstring — set_status()  line 34
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+FIXABLE patches are safe mechanical changes. REFACTOR hints require judgment — review context before applying.
+
+=== TRIAGE + FIX: payment.py ===
+FILEPATH: C:/Users/USER/Downloads/test-repo\point-of-sale\before\pos\payment.py
+Issues: 4  (FIXABLE: 0, REFACTOR: 0, WARNING: 4)
+
+[WARNING]  no_docstring — find_order()  line 11
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — compute_order_total_price()  line 14
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — connect_to_service()  line 23
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — process_payment()  line 27
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+FIXABLE patches are safe mechanical changes. REFACTOR hints require judgment — review context before applying.
+
+=== TRIAGE + FIX: system.py ===
+FILEPATH: C:/Users/USER/Downloads/test-repo\point-of-sale\before\pos\system.py
+Issues: 6  (FIXABLE: 0, REFACTOR: 0, WARNING: 6)
+
+[WARNING]  no_docstring — setup_payment_processor()  line 18
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  missing_type_hints — register_order()  line 21
+  Missing annotations — return type.
+  HINT:  Add type hints: def fn(x: int, y: str) -> bool:
+
+[WARNING]  no_docstring — register_order()  line 21
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — find_order()  line 25
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — compute_order_total_price()  line 28
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+[WARNING]  no_docstring — process_order()  line 34
+  Public function has no docstring.
+  HINT:  Add a one-line summary: """Brief description."""
+
+FIXABLE patches are safe mechanical changes. REFACTOR hints require judgment — review context before applying.
+
+No functions found in C:/Users/USER/Downloads/test-repo\point-of-sale\before\pos\__init__.py.
+
+=== TRIAGE + FIX: after.py ===
+FILEPATH: C:/Users/USER/Downloads/test-repo\vehicle-registry-system\after.py
+Issues: 0  (FIXABLE: 0, REFACTOR: 0, WARNING: 0)
+
+FIXABLE patches are safe mechanical changes. REFACTOR hints require judgment — review context before applying.
+
+=== TRIAGE + FIX: before.py ===
+FILEPATH: C:/Users/USER/Downloads/test-repo\vehicle-registry-system\before.py
+Issues: 1  (FIXABLE: 0, REFACTOR: 1, WARNING: 0)
+
+[REFACTOR]  too_many_params — add_vehicle_model_info()  line 79
+  6 parameters (limit 5).
+  HINT:  Group related parameters into a dataclass or TypedDict. E.g. replace (name, age, email, role) with a User dataclass.
+
+FIXABLE patches are safe mechanical changes. REFACTOR hints require judgment — review context before applying.
+

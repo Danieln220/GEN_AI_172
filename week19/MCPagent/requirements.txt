@@ -1,0 +1,5 @@
+# Python dependencies for the smolagents-powered Dev Assistant
+mcp
+smolagents[litellm,mcp]
+streamlit
+python-dotenv
