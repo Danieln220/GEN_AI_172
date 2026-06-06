@@ -5,7 +5,7 @@ import random
 import sys
 import json
 
-FILE_PATH = "words.txt"
+FILE_PATH = r"C:\Users\USER\Downloads\words.zip\words.txt"
 
 
 # ============================================================
